@@ -9,6 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 
 class MainActivity : ComponentActivity() {
@@ -24,9 +25,9 @@ class MainActivity : ComponentActivity() {
 fun MainScreen() {
     Surface(
         modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background
+        color = Color.White
     ) {
-        Text(text = "Hello Android!")
+        Text(text = "Hello Android!\nHello Android!\nHello Android!")
     }
 }
 

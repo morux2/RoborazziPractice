@@ -30,6 +30,8 @@ class MainActivityTest {
     private fun captureMainActivity() {
         composeTestRule
             .onRoot()
-            .captureRoboImage()
+            .captureRoboImage(
+                roborazziOptions = DefaultRoborazziOptions,
+            )
     }
 }
