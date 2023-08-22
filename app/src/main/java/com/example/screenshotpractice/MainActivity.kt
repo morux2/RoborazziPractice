@@ -27,7 +27,7 @@ fun MainScreen() {
         modifier = Modifier.fillMaxSize(),
         color = Color.White
     ) {
-        Text(text = "Hello Android!\nHello Android!")
+        Text(text = "Hello Android!\nHello Android!\nHello Android!")
     }
 }
 
