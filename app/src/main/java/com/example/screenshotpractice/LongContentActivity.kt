@@ -40,7 +40,7 @@ fun LongContentScreen() {
     }
 }
 
-@Preview(showBackground = true)
+@Preview(name = "LongContentScreenPreview", group = "LongContentScreen", showBackground = true)
 @Composable
 fun LongContentScreenPreview() {
     LongContentScreen()
