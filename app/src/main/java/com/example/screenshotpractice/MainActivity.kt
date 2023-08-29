@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity() {
 fun MainScreen() {
     Surface(
         modifier = Modifier.fillMaxSize(),
-        color = Color.White
+        color = Color(0xFFFEFEFF)
     ) {
         Text(
             text = "Hello Android!\nHello Android!\nHello Android!",
