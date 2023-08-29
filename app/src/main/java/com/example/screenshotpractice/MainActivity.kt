@@ -1,5 +1,6 @@
 package com.example.screenshotpractice
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -27,7 +28,10 @@ fun MainScreen() {
         modifier = Modifier.fillMaxSize(),
         color = Color.White
     ) {
-        Text(text = "Hello Android!\nHello Android!\nHello Android!")
+        Text(
+            text = "Hello Android!\nHello Android!\nHello Android!",
+            color = Color.Gray
+            )
     }
 }
 
