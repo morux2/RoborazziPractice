@@ -14,7 +14,10 @@ import org.robolectric.annotation.GraphicsMode
 // https://github.com/DroidKaigi/conference-app-2023/pull/217
 @RunWith(ParameterizedRobolectricTestRunner::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
-@Config(qualifiers = RobolectricDeviceQualifiers.MediumTablet)
+@Config(
+    qualifiers = RobolectricDeviceQualifiers.MediumTablet,
+    application = DummyApp::class
+    )
 class ShowkaseScreenshotTest(
     private val showkaseBrowserComponent: ShowkaseBrowserComponent,
 ) {
