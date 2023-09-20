@@ -1,6 +1,6 @@
 package com.example.screenshotpractice
 
-import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onRoot
 import com.airbnb.android.showkase.models.Showkase
 import com.airbnb.android.showkase.models.ShowkaseBrowserComponent
@@ -22,7 +22,7 @@ class ShowkaseScreenshotTest(
     private val showkaseBrowserComponent: ShowkaseBrowserComponent,
 ) {
     @get:Rule
-    val composeTestRule = createAndroidComposeRule<DummyActivity>()
+    val composeTestRule = createComposeRule()
 
     @Test
     fun previewScreenshot() {
