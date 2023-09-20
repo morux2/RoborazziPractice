@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ScreenshotPractice"
         tools:targetApi="31">
         <activity
+            android:name=".DummyActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.ScreenshotPractice">
@@ -22,7 +25,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".LongContentActivity" />
     </application>
 
