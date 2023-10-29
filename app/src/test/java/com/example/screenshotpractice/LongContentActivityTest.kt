@@ -3,8 +3,6 @@ package com.example.screenshotpractice
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
-import androidx.compose.ui.test.onRoot
-import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.performScrollToNode
 import androidx.test.runner.AndroidJUnit4
 import com.github.takahirom.roborazzi.RobolectricDeviceQualifiers
@@ -23,13 +21,13 @@ class LongContentActivityTest {
 
     @Test
     @Config(qualifiers = RobolectricDeviceQualifiers.Pixel5)
-    fun captureMainActivityPixel5() = captureMainActivity()
+    fun captureMainActivityPixel5() = captureLongContentActivity()
 
     @Test
     @Config(qualifiers = RobolectricDeviceQualifiers.MediumTablet)
-    fun captureMainActivityMediumTablet() = captureMainActivity()
+    fun captureMainActivityMediumTablet() = captureLongContentActivity()
 
-    private fun captureMainActivity() {
+    private fun captureLongContentActivity() {
         composeTestRule
             .onNodeWithTag("lazyColumn")
             .performScrollToNode(hasText("Hello 30"))
