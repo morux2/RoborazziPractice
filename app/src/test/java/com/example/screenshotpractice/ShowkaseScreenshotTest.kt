@@ -1,5 +1,6 @@
 package com.example.screenshotpractice
 
+import androidx.compose.runtime.Composable
 import com.airbnb.android.showkase.models.Showkase
 import com.airbnb.android.showkase.models.ShowkaseBrowserComponent
 import com.github.takahirom.roborazzi.DEFAULT_ROBORAZZI_OUTPUT_DIR_PATH
@@ -35,7 +36,11 @@ class ShowkaseScreenshotTest(
         @ParameterizedRobolectricTestRunner.Parameters
         @JvmStatic
         fun components(): Iterable<Array<Any?>> {
-            return Showkase.getMetadata().componentList.map { showkaseBrowserComponent ->
+            return Showkase.getMetadata().componentList.map {
+                it.copy(componentName = it.componentName.split(" ")[0])
+            }.distinctBy {
+                it.componentName
+            }.map { showkaseBrowserComponent ->
                 arrayOf(showkaseBrowserComponent)
             }
         }
