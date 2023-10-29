@@ -1,6 +1,5 @@
 package com.example.screenshotpractice
 
-import androidx.compose.runtime.Composable
 import com.airbnb.android.showkase.models.Showkase
 import com.airbnb.android.showkase.models.ShowkaseBrowserComponent
 import com.github.takahirom.roborazzi.DEFAULT_ROBORAZZI_OUTPUT_DIR_PATH
