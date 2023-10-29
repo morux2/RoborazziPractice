@@ -14,11 +14,23 @@ import org.robolectric.annotation.GraphicsMode
 // https://github.com/DroidKaigi/conference-app-2023/pull/217
 @RunWith(ParameterizedRobolectricTestRunner::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
-@Config(qualifiers = RobolectricDeviceQualifiers.MediumTablet)
 class ShowkaseScreenshotTest(
     private val showkaseBrowserComponent: ShowkaseBrowserComponent,
 ) {
 
+    @Config(qualifiers = RobolectricDeviceQualifiers.MediumTablet)
+    @Test
+    fun previewTabletScreenshot() {
+        val filePath =
+            DEFAULT_ROBORAZZI_OUTPUT_DIR_PATH + "/" + showkaseBrowserComponent.group + "_" + showkaseBrowserComponent.componentName + "Tablet" + ".png"
+        captureRoboImage(
+            filePath,
+        ) {
+            showkaseBrowserComponent.component()
+        }
+    }
+
+    @Config(qualifiers = RobolectricDeviceQualifiers.Pixel6)
     @Test
     fun previewScreenshot() {
         val filePath =
