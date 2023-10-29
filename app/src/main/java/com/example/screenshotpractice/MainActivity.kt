@@ -31,7 +31,7 @@ fun MainScreen() {
     }
 }
 
-@Preview(name = "MainScreenPreview", group = "MainScreen", showBackground = true)
+@MyPreview
 @Composable
 fun MainScreenPreview() {
     MainScreen()

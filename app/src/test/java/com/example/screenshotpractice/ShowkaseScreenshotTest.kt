@@ -35,7 +35,11 @@ class ShowkaseScreenshotTest(
         @ParameterizedRobolectricTestRunner.Parameters
         @JvmStatic
         fun components(): Iterable<Array<Any?>> {
-            return Showkase.getMetadata().componentList.map { showkaseBrowserComponent ->
+            return Showkase.getMetadata().componentList.map {
+                it.copy(componentName = it.componentName.split(" ")[0])
+            }.distinctBy {
+                it.componentName
+            }.map { showkaseBrowserComponent ->
                 arrayOf(showkaseBrowserComponent)
             }
         }
