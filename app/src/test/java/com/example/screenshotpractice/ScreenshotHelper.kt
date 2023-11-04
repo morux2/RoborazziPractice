@@ -22,6 +22,33 @@ val DefaultRoborazziOptions =
         recordOptions = RoborazziOptions.RecordOptions(resizeScale = 0.5), // Reduce the size of the PNGs
     )
 
+fun <A : ComponentActivity> AndroidComposeTestRule<ActivityScenarioRule<A>, A>.captureComponent(
+    screenshotName: String,
+    body: @Composable () -> Unit,
+    roborazziOptions: RoborazziOptions = DefaultRoborazziOptions,
+) {
+    val device = if (screenshotName.contains("Tablet")) {
+        "tablet" to RobolectricDeviceQualifiers.MediumTablet
+    }else {
+        "phone" to RobolectricDeviceQualifiers.Pixel6
+    }
+
+    // Set qualifiers from specs
+    RuntimeEnvironment.setQualifiers(device.second)
+
+    this.activity.setContent {
+        CompositionLocalProvider(
+            LocalInspectionMode provides true,
+        ) {
+            body()
+        }
+    }
+
+    this.onRoot().captureRoboImage(
+        "$DEFAULT_ROBORAZZI_OUTPUT_DIR_PATH/$screenshotName-${device.first}.png"
+    )
+}
+
 fun <A : ComponentActivity> AndroidComposeTestRule<ActivityScenarioRule<A>, A>.captureMultiDevice(
     screenshotName: String,
     body: @Composable () -> Unit,
