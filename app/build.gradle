@@ -84,4 +84,7 @@ dependencies {
     // showkase
     implementation "com.airbnb.android:showkase:1.0.0-beta18"
     ksp "com.airbnb.android:showkase-processor:1.0.0-beta18"
+
+    // lottie
+    implementation "com.airbnb.android:lottie-compose:6.1.0"
 }
