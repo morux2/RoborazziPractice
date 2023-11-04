@@ -1,14 +1,12 @@
 package com.example.screenshotpractice
 
+import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import com.airbnb.android.showkase.models.Showkase
 import com.airbnb.android.showkase.models.ShowkaseBrowserComponent
-import com.github.takahirom.roborazzi.DEFAULT_ROBORAZZI_OUTPUT_DIR_PATH
-import com.github.takahirom.roborazzi.RobolectricDeviceQualifiers
-import com.github.takahirom.roborazzi.captureRoboImage
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.ParameterizedRobolectricTestRunner
-import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 
 // https://github.com/DroidKaigi/conference-app-2023/pull/217
@@ -17,29 +15,15 @@ import org.robolectric.annotation.GraphicsMode
 class ShowkaseScreenshotTest(
     private val showkaseBrowserComponent: ShowkaseBrowserComponent,
 ) {
+    @get:Rule
+    val composeTestRule = createAndroidComposeRule<DummyActivity>()
 
-    @Config(qualifiers = RobolectricDeviceQualifiers.MediumTablet)
-    @Test
-    fun previewTabletScreenshot() {
-        val filePath =
-            DEFAULT_ROBORAZZI_OUTPUT_DIR_PATH + "/" + showkaseBrowserComponent.group + "_" + showkaseBrowserComponent.componentName + "Tablet" + ".png"
-        captureRoboImage(
-            filePath,
-        ) {
-            showkaseBrowserComponent.component()
-        }
-    }
-
-    @Config(qualifiers = RobolectricDeviceQualifiers.Pixel6)
     @Test
     fun previewScreenshot() {
-        val filePath =
-            DEFAULT_ROBORAZZI_OUTPUT_DIR_PATH + "/" + showkaseBrowserComponent.group + "_" + showkaseBrowserComponent.componentName + ".png"
-        captureRoboImage(
-            filePath,
-        ) {
-            showkaseBrowserComponent.component()
-        }
+        composeTestRule.captureMultiDevice(
+            screenshotName = "${showkaseBrowserComponent.group}-${showkaseBrowserComponent.componentName}",
+            body = showkaseBrowserComponent.component
+        )
     }
 
     companion object {
