@@ -36,7 +36,7 @@ fun LongContentScreen() {
     }
 }
 
-@MyPreview
+@MyScreenPreview
 @Composable
 fun LongContentScreenPreview() {
     LongContentScreen()

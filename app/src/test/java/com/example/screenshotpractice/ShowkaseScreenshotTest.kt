@@ -19,11 +19,23 @@ class ShowkaseScreenshotTest(
     val composeTestRule = createAndroidComposeRule<DummyActivity>()
 
     @Test
-    fun previewScreenshot() {
-        composeTestRule.captureMultiDevice(
-            screenshotName = "${showkaseBrowserComponent.group}-${showkaseBrowserComponent.componentName}",
-            body = showkaseBrowserComponent.component
-        )
+    fun takeScreenShot() {
+        val screenshotName =
+            "${showkaseBrowserComponent.group}-${showkaseBrowserComponent.componentName}"
+
+        if (showkaseBrowserComponent.group.contains("Screen")) {
+            composeTestRule.captureMultiDevice(
+                screenshotName = screenshotName,
+                body = showkaseBrowserComponent.component
+            )
+        }
+
+        if (showkaseBrowserComponent.group.contains("UI")) {
+            composeTestRule.captureComponent(
+                screenshotName = screenshotName,
+                body = showkaseBrowserComponent.component
+            )
+        }
     }
 
     companion object {
